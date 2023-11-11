@@ -1,0 +1,105 @@
+.DiarySection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  /* background-color: green; */
+}
+
+.DiarySectionInner {
+  padding: 30px;
+  /* background-color: yellow; */
+}
+
+.DiaryContainer {
+  border-radius: 10px;
+}
+
+.DiaryTextContainer {
+  position: relative;
+  background-color: chartreuse;
+  border-radius: 10px;
+  /* margin: 10px; */
+  font-size: 14px;
+  /* padding: 25px; */
+}
+
+.DiaryTextContainer:after {
+  content: "";
+  position: absolute;
+  left: 90px;
+  /* top: 25px; */
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 20px solid chartreuse;
+}
+
+.DiaryTextContainerInner {
+  padding: 20px;
+}
+
+.DiaryText {
+  color: black;
+}
+
+.DiaryCharacterConatiner {
+  /* margin: 10px; */
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.DiaryCharacter {
+  height: 150px;
+  width: 150px;
+  background-color: lightgray;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+}
+
+.DiaryDateSection {
+}
+
+.DiaryDateContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: black;
+  /* width: auto; */
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 10px 0px;
+}
+
+.DiaryDateText {
+  color: white;
+  /* font-weight: 600; */
+}
+
+.BackBtn {
+  background-color: black;
+  border-radius: 10px;
+  border-radius: 10px;
+  padding: 5px 7px;
+  /* width: auto; */
+  color: white;
+  font-size: 15px;
+}
+
+.HomeBtn {
+  background-color: black;
+  border-radius: 10px;
+  border-radius: 10px;
+  padding: 5px 10px;
+  /* width: auto; */
+  color: white;
+  height: fit-content;
+  margin: 15px;
+  font-size: 15px;
+}

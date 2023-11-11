@@ -9,7 +9,6 @@ import {
 } from '@nestjs/common';
 import { AppService } from './app.service';
 import { OpenAI } from 'openai';
-import { KeywordOutput } from './interface/app.model';
 
 function sleep(sec) {
   let start = Date.now(),

@@ -168,7 +168,7 @@ export class AppController {
   }
 
   @Get('/keyword')
-  async getSafetyKeyword(): Promise<KeywordOutput> {
+  async getSafetyKeyword() {
     return this.appService.getSafetyKeyword();
   }
 

@@ -37,7 +37,14 @@ export class AppService {
   }
 
   getDaily(username: string, day: string) {
-    const result = this.db[username]?.find((ele) => ele.day === day);
+    const dayDate = new Date(day);
+    const result = this.db[username]?.find((ele) => {
+      const eleDay = new Date(ele.day);
+      if (eleDay.getFullYear() !== dayDate.getFullYear()) return false;
+      if (eleDay.getMonth() !== dayDate.getMonth()) return false;
+      if (eleDay.getDate() !== dayDate.getDate()) return false;
+      return true;
+    });
     if (!result) throw new NotFoundException('could not found diary');
     return result;
   }
@@ -75,7 +82,7 @@ export class AppService {
     console.log(this.db);
   }
 
-  getSafetyKeyword(date: String): KeywordOutput {
+  getSafetyKeyword(date: string): KeywordOutput {
     const keyword = '한파';
     const choices = [
       '눈 맞고 뛰어간다',
@@ -86,7 +93,7 @@ export class AppService {
     return { keyword, choices, script };
   }
 
-  getSafetyInfo(date: String, username: String): string {
+  getSafetyInfo(date: string, username: string): string {
     return '';
   }
 }

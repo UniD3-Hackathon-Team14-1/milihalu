@@ -63,6 +63,7 @@ export class AppService {
   getDiaryUrl(title: string, content: string) {
     const hash = Math.random().toString().slice(2, 8);
     this.db.shared[hash] = { title, content };
+    console.log(this.db.shared[hash]);
     return hash;
   }
 

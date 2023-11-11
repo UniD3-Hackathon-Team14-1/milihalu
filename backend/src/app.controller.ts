@@ -6,6 +6,7 @@ import {
   Put,
   Query,
   Param,
+  Post,
 } from '@nestjs/common';
 import { AppService } from './app.service';
 import { OpenAI } from 'openai';
@@ -138,7 +139,7 @@ export class AppController {
     };
   }
 
-  @Get('/diary/url')
+  @Post('/diary/url')
   getDiaryUrl(@Body() body: any) {
     const { title, content } = body;
     return this.appService.getDiaryUrl(title, content);

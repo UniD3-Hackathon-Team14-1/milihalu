@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 export default function Calendar() {
-  const korDay = ['월', '화', '수', '목', '금', '토', '일'];
+  const korDay = ['일', '월', '화', '수', '목', '금', '토'];
   const [selectedDay, setSelectedDay] = useState('');
   const [task, setTask] = useState(['task 1', 'task 2', 'task 3']);
 
@@ -10,7 +10,7 @@ export default function Calendar() {
     async function getData() {
       const data = await axios.get('/api/weekly', {
         params: {
-          week: '2023-11-6',
+          date: '2023-11-6',
           username: 'asdf'
         }
       });

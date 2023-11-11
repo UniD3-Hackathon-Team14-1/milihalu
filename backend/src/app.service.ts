@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { KeywordOutput } from './interface/app.model';
 
 @Injectable()
@@ -37,7 +37,9 @@ export class AppService {
   }
 
   getDaily(username: string, day: string) {
-    return this.db[username]?.find((ele) => ele.day === day);
+    const result = this.db[username]?.find((ele) => ele.day === day);
+    if (!result) throw new NotFoundException('could not found diary');
+    return result;
   }
 
   getWeekly(username: string, week: string) {
@@ -48,7 +50,13 @@ export class AppService {
       const date_string = `${date.getFullYear()}-${
         date.getMonth() + 1
       }-${date.getDate()}`;
-      result.push(this.getDaily(username, date_string));
+      console.log(date_string);
+      try {
+        result.push(this.getDaily(username, date_string));
+        console.log('result become ', result);
+      } catch (e) {
+        console.log("couldn't find one");
+      }
       date.setDate(date.getDate() + 1);
       console.log(date);
     }

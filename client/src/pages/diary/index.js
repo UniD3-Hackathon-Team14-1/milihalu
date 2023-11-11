@@ -7,9 +7,6 @@ function Diary() {
     <Fragment>
       <div className={styles.DiarySection}>
         <div className={styles.DiarySectionInner}>
-          <Link className={styles.BackBtn} href={"/"}>
-            &lt; back
-          </Link>
           <div className={styles.DiaryDateContainer}>
             <h4 className={styles.DiaryDateText}>2023년 11월 12일</h4>
           </div>

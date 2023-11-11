@@ -3,7 +3,15 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class AppService {
   db = {
-    asdf: [{ day: '2023-11-11', data: '서울역 가기, 하이킹 하기' }],
+    asdf: [
+      {
+        day: '2023-11-11',
+        data: [
+          { time: '10:00', position: '서울역', task: '가기' },
+          { time: '13:00', position: '하이킹', task: '하이킹 가기' },
+        ],
+      },
+    ],
   };
 
   getHello(): string {

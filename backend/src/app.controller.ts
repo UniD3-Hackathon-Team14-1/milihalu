@@ -23,19 +23,26 @@ export class AppController {
   }
 
   @Get('/diary')
-  async getDiary(@Body() body: any) {
-    if (!body['data']) {
-      throw new BadRequestException();
-    }
-    const data = body['data'];
-    const data_prompt = data.map((ele) => `"""${ele}"""`).join(' ');
+  async getDiary(
+    @Query('username') username: string,
+    @Query('day') day: string,
+  ) {
+    const data = await this.appService.getDaily(username, day);
+    if (!data) throw new BadRequestException();
+    console.log(data);
+    const data_prompt = data.data
+      .map((ele) => `"""${ele.time}$${ele.position}$${ele.task}"""`)
+      .join(' ');
     console.log(data_prompt);
     const completion = await this.openAI.chat.completions.create({
       messages: [
         {
           role: 'system',
-          content:
-            '세 개의 쌍따옴표로 감싼 여러 텍스트 각각에 대해 안전 사고가 날 만한 시나리오를 일기 형식으로 한두문장 정도로 짧게 적어줘. 생각지도 못한 사고이지만 많은 사람들이 안전불감증으로 놓치고 있는 안전사고이면 더 좋아. 나만 볼 수 있는 일기를 적는 것처럼 말투는 격 없이 써줘. 한두문장 정도로 반드시 짧게 적어줘야 해 그리고 사무적인 말투 말고 친근한 말투로 나 자신에게 말하듯이 써줘',
+          content: `너는 주어진 일정을 수행하는 가상의 사람이야.
+            세 개의 쌍따옴표로 감싼 여러 텍스트 각각에는 시간, 위치, 할 일이 '$'로 구분되어 적혀 있어.
+            각각의 일정을 진행하는 동안 안전사고가 날 만한 일을 일기 형식으로 짧게 적어줘.
+            생각지도 못한 사고이지만 많은 사람들이 안전불감증으로 놓치고 있는 안전사고이면 더 좋아.
+            친근한 말투로 해 주고 한두문장 정도로 반드시 짧게 적어줘`,
         },
         {
           role: 'user',
@@ -62,6 +69,7 @@ export class AppController {
   @Put('/daily')
   updateDaily(@Body() body: any) {
     const { username, day, data } = body;
+    console.log(data);
     this.appService.updateDaily(username, day, data);
   }
 }

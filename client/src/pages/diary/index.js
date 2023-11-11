@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import styles from "../../styles/diary.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
 function Diary() {
   return (
@@ -32,10 +33,8 @@ function Diary() {
               </div>
             </div>
             <div className={styles.DiaryCharacterConatiner}>
-              <div className={styles.DiaryCharacter}>
-                <span>캐릭터 영역</span>
-              </div>
-              <Link className={styles.HomeBtn} href={"/"}>
+              <div className={styles.DiaryCharacter}></div>
+              <Link className={styles.HomeBtn} href={"/reminder"}>
                 확인 완료!
               </Link>
             </div>

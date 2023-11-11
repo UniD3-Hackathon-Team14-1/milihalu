@@ -53,17 +53,18 @@
 }
 
 .DiaryCharacter {
+  background-image: url("/images/ch02_yellow.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
   height: 150px;
   width: 150px;
-  background-color: lightgray;
 
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 15px;
-}
-
-.DiaryDateSection {
 }
 
 .DiaryDateContainer {

@@ -105,18 +105,22 @@ export default function Calendar() {
             </div>
           )
         }
-        <span className="text-2xl w-full flex justify-center"
-          onClick={() => {
-            let _task = [...selectedTask];
-            _task.push({checked: false, task: ''});
-            updateScheduleHandler({
-              "username": "asdf",
-              "day": task[selectedDay].day,
-              "data": _task
-            });
-            return setSelectedTask(_task);
-          }}
-        >+</span>
+        {
+          selectedDay >= 0
+          &&
+          <span className="text-2xl w-full flex justify-center"
+            onClick={() => {
+              let _task = [...selectedTask];
+              _task.push({checked: false, task: ''});
+              updateScheduleHandler({
+                "username": "asdf",
+                "day": task[selectedDay].day,
+                "data": _task
+              });
+              return setSelectedTask(_task);
+            }}
+          >+</span>
+        }
         
       </div>
 

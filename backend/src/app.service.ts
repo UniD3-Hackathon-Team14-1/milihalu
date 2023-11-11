@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { KeywordOutput } from './interface/app.model';
+import { KeywordData, TemperatureKeywordData } from './interface/keyword.model';
 
 @Injectable()
 export class AppService {
@@ -94,6 +95,31 @@ export class AppService {
   }
 
   getSafetyInfo(date: string, username: string): string {
-    return '';
+    const daily = this.db[username]?.find((ele) => ele.day === date);
+
+    let script = date + '의 **안전 정보**를 알려드리겠습니다.\n\n';
+
+    //TODO: weather & temperature keyword
+    script += TemperatureKeywordData[0];
+
+    // 특정 일정 기준으로 keyword 매칭하기
+    script +=
+      '다음은 ' +
+      date +
+      '의 일정 속 키워드를 토대로 정리한 **안전 정보**에요.\n\n';
+
+    for (const schedule in daily.data) {
+      for (const data in KeywordData) {
+        for (const keyword in data['keywords']) {
+          if (schedule['task'].includes(keyword)) {
+            script += '|' + schedule['time'] + schedule['task'] + '\n';
+            script += data['script'] + '\n\n';
+            break;
+          }
+        }
+      }
+    }
+
+    return script;
   }
 }

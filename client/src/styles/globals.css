@@ -27,7 +27,7 @@ body {
     )
     rgb(var(--background-start-rgb));
   */
-  height: 100vh; /* 화면 높이에 맞게 설정 */
+  height: 100vh; 
   display: flex;
   flex-direction: column;
   justify-content: space-between;

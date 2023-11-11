@@ -5,7 +5,7 @@ export default function Navigator() {
   useEffect(() => {
     setPath(window.location.pathname);
   }, []);
-  
+
   return (
     <div className="btm-nav">
       <button className={path === '/' ? 'active' : ''} onClick={() => {window.location.href = '/'}}>
@@ -13,7 +13,7 @@ export default function Navigator() {
         <span className="btm-nav-label">Home</span>
       </button>
       <button className={path === '/calendar' ? 'active' : ''} onClick={() => {window.location.href = '/calendar'}}>
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7zm12-4v4M8 3v4m-4 4h16m-9 4h1m0 0v3"/></svg>
         <span className="btm-nav-label">Calendar</span>
       </button>
       <button className={path === '/diary' ? 'active' : ''} onClick={() => {window.location.href = '/diary'}}>

@@ -11,13 +11,14 @@ export default function Calendar() {
 
   return (
     <div className="">
-      <div className="carousel rounded-box w-full flex justify-between p-2 my-10">
+      <div className="carousel w-full flex justify-between p-2 my-10">
         {
           korDay.map((x, i) => 
             <div
-              className="carousel-item px-3 py-2 border" key={i}
+              className="carousel-item px-3 py-2 border rounded-box" key={i}
               onClick={() => setSelectedDay(x)}
-            >{x}</div>)
+            >{x}</div>
+          )
         }
       </div>
       
@@ -32,7 +33,7 @@ export default function Calendar() {
                 let _task = [...task];
                 _task[i] = y.target.value;
                 setTask(_task);
-              }} placeholder="Type here" className="input input-ghost input-sm w-full max-w-xs mr-4" />
+              }} placeholder="Type here" className="input input-ghost input-sm w-full mr-4" />
               <svg
                 onClick={() => {
                   let _task = [];

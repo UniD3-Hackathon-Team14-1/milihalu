@@ -144,8 +144,9 @@ export class AppController {
     return this.appService.getDiaryUrl(title, content);
   }
 
-  @Get('/diary')
-  getDiaryByUrl(@Param() hash: string) {
+  @Get('/diary/:hash')
+  getDiaryByUrl(@Param('hash') hash: string) {
+    console.log(hash);
     return this.appService.getDiaryByUrl(hash);
   }
 

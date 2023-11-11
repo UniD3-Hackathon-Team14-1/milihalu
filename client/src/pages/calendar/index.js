@@ -51,7 +51,7 @@ export default function Calendar() {
                 <span className="indicator-item badge badge-secondary"></span>
               }
               <div
-                className="carousel-item px-3 py-2 border rounded-box" key={i}
+                className={"carousel-item px-3 py-2 border rounded-box " + (i === selectedDay ? 'bg-slate-100' : '')} key={i}
                 onClick={() => setSelectedDay(i)}
               >{x}</div>
             </div>

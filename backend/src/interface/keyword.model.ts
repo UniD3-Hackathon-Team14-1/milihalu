@@ -1,11 +1,13 @@
 export interface Keyword {
   keyword: string[];
+  category: string;
   script: string;
 }
 
 export const KeywordData: Keyword[] = [
   {
     keyword: ['커피', '아아', '카페'],
+    category: '카페인',
     script:
       '### ☕️ 카페인 위험\n\
     - 과도한 카페인은 수면장애를 유발할 수 있으며, 두통, 불안, 신경과민과 같은 신체적인 증상을 유발할 수 있어요.\
@@ -13,6 +15,7 @@ export const KeywordData: Keyword[] = [
   },
   {
     keyword: ['술', '맥주', '소주', '와인'],
+    category: '알코올',
     script:
       '### 🍺 알코올 중독\n\
     - 과도한 알코올 섭취는 간 손상, 신경계 문제, 심장 문제등의 신체적인 건강은 물론 급성 중독까지 이어질 수 있습니다.\
@@ -20,6 +23,7 @@ export const KeywordData: Keyword[] = [
   },
   {
     keyword: ['당근', '직거래', '중고나라', '번장', '번개장터'],
+    category: '중고거래',
     script:
       '### 💵 거래 안전\n\
     - 입금하기 전에 꼭! [더치트](https://thecheat.co.kr/rb/?mod=_search)에 **계좌번호를 조회하세요**. 안전한 계좌번호인지 확인하고 입금해야합니다.\
@@ -29,6 +33,7 @@ export const KeywordData: Keyword[] = [
   },
   {
     keyword: ['입금', '출금', '은행'],
+    category: '보이스피싱',
     script:
       '### 🏦 금융 안전\n\
     - 만약 가까운 사람이 급한 상황이나 긴급한 문제 때문에 현금을 입금하라고 요구하면, 보이스피싱을 먼저 의심해보세요.\
@@ -38,6 +43,7 @@ export const KeywordData: Keyword[] = [
   },
   {
     keyword: ['야근', '밤샘', '과제'],
+    category: '과로',
     script: `### 💊 건강 지키세요
 
     - 피로로 인한 코피, 수면부족으로 인한 계속되는 졸음과 **하품은 몸에서 쉬라는 경고**에요.

@@ -15,7 +15,6 @@ export default function Calendar() {
           username: 'asdf'
         }
       });
-      console.log(data.data)
       setTask(data.data);
     }
     getData();
@@ -86,7 +85,6 @@ export default function Calendar() {
                   "day": task[selectedDay].day,
                   "data": _task
                 });
-                console.log(_task)
                 setSelectedTask(_task);
               }} placeholder="Type here" className="input input-ghost input-sm w-full mr-4" />
               <svg

@@ -107,4 +107,32 @@ export class AppService {
 
     return script;
   }
+
+  getTwoTopCategory(username: string) {
+    const category = KeywordData.map((ele) => {
+      return { category: ele.category, count: 0 };
+    });
+    const keyword = KeywordData.map((ele) => ele.keyword);
+    const nowDate = new Date();
+    nowDate.setDate(nowDate.getDate());
+    const weekData = this.getWeekly(
+      username,
+      `${nowDate.getFullYear()}-${nowDate.getMonth() + 1}-${nowDate.getDate()}`,
+    );
+    for (const data in weekData) {
+      for (let i = 0; i < weekData[data].data.length; i++) {
+        keyword.forEach((ele, keyword_i) => {
+          ele.forEach((e) => {
+            if (weekData[data].data[i].task.includes(e)) {
+              category[keyword_i].count++;
+            }
+          });
+        });
+      }
+    }
+
+    category.sort((a, b) => b.count - a.count);
+    console.log(category);
+    return category.slice(0, 2).map((ele) => ele.category);
+  }
 }

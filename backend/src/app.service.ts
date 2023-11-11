@@ -81,10 +81,10 @@ export class AppService {
   getSafetyInfo(date: string, username: string): string {
     const daily = this.db[username]?.find((ele) => ele.day === date);
 
-    let script = date + '의 **안전 정보**를 알려드리겠습니다.\n\n';
+    let script = date + '의 **안전 정보**를 알려드리겠습니다.\n';
 
     //TODO: weather & temperature keyword
-    script += TemperatureKeywordData[0];
+    script += TemperatureKeywordData['~10'];
 
     // 특정 일정 기준으로 keyword 매칭하기
     script +=
@@ -92,11 +92,11 @@ export class AppService {
       date +
       '의 일정 속 키워드를 토대로 정리한 **안전 정보**에요.\n\n';
 
-    for (const schedule in daily.data) {
-      for (const data in KeywordData) {
-        for (const keyword in data['keywords']) {
-          if (schedule['task'].includes(keyword)) {
-            script += '|' + schedule['time'] + schedule['task'] + '\n';
+    for (const schedule of daily.data) {
+      for (const data of KeywordData) {
+        for (const keyword of data.keyword) {
+          if (schedule.task.includes(keyword)) {
+            script += '| ' + schedule['task'] + '\n';
             script += data['script'] + '\n\n';
             break;
           }

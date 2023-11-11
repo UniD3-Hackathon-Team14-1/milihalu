@@ -5,15 +5,15 @@ export const data = {
       data: [
         {
           checked: false,
-          task: '지하철역 가기',
+          task: '당근하기',
         },
         {
           checked: true,
-          task: '하이킹 가기',
+          task: '카페가서 아아사기',
         },
         {
           checked: false,
-          task: '집으로 돌아가기',
+          task: '윤이랑 술약ㅎㅎ',
         },
         { checked: true, task: '과제하기' },
       ],

@@ -1,43 +1,11 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { KeywordOutput } from './interface/app.model';
 import { KeywordData, TemperatureKeywordData } from './interface/keyword.model';
+import { data } from './data/data.model';
 
 @Injectable()
 export class AppService {
-  db = {
-    asdf: [
-      {
-        day: '2023-11-11',
-        data: [
-          {
-            checked: false,
-            time: '10:00',
-            position: '서울역',
-            task: '지하철역 가기',
-          },
-          {
-            checked: true,
-            time: '13:00',
-            position: '하이킹',
-            task: '하이킹 가기',
-          },
-          {
-            checked: false,
-            time: '18:00',
-            position: '서울역',
-            task: '집으로 돌아가기',
-          },
-          { checked: true, time: '20:00', position: '집', task: '과제하기' },
-        ],
-      },
-    ],
-    shared: {
-      '123456': {
-        title: 'empty',
-        content: 'empty content',
-      },
-    },
-  };
+  db = data;
 
   getHello(): string {
     return 'Hello World!';

@@ -31,8 +31,8 @@
   position: absolute;
   left: 90px;
   /* top: 25px; */
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
   /* border-top: 20px solid black; */
 }
 

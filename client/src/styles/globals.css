@@ -3,7 +3,6 @@
 @tailwind utilities;
 /*@import url('');*/
 
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -35,9 +34,8 @@ body {
 
   .App {
     background-color: rgb(255, 255, 255);
-    
   }
-  .top-box{
+  .top-box {
     width: 100vw;
     height: 52vh;
     text-align: center;
@@ -47,14 +45,13 @@ body {
     padding: 20px;
   }
 
-
-  .text-box{
+  .text-box {
     width: 82vw;
     height: 11vh;
     padding: 20px;
     font-size: 2.5em;
     font-weight: 470;
-    font-family: 'Arial', '맑은 고딕', serif;
+    font-family: "Arial", "맑은 고딕", serif;
     color: rgb(0, 0, 0);
     text-align: center;
     display: flex;
@@ -66,27 +63,35 @@ body {
     border-color: rgb(1, 184, 1);
     letter-spacing: 8px;
   }
-  
+
   .centered-box {
     text-align: center;
     justify-content: center;
     align-items: center;
     display: flex;
   }
-  
+
   .centered-image {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 50vh; /* */
   }
-  
+
   .centered-image img {
     width: 50px;
     height: auto;
-    max-width: 80%; 
-    max-height: 80%; 
+    max-width: 80%;
+    max-height: 80%;
   }
-  
-}
 
+  .chick-img {
+    background-image: url("/images/ch01_yellow.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    width: 100px;
+    height: 50px;
+  }
+}

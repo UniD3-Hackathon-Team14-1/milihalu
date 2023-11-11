@@ -31,6 +31,12 @@ export class AppService {
         ],
       },
     ],
+    shared: {
+      '123456': {
+        title: 'empty',
+        content: 'empty content',
+      },
+    },
   };
 
   getHello(): string {
@@ -81,6 +87,16 @@ export class AppService {
     else this.db[username].push({ day, data });
 
     console.log(this.db);
+  }
+
+  getDiaryUrl(title: string, content: string) {
+    const hash = Math.random().toString().slice(2, 8);
+    this.db.shared[hash] = { title, content };
+    return hash;
+  }
+
+  getDiaryByUrl(hash: string) {
+    return this.db.shared[hash];
   }
 
   getSafetyKeyword(date: string): KeywordOutput {

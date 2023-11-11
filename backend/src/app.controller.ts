@@ -117,6 +117,17 @@ export class AppController {
     return { diary: completion3.choices[0].message.content };
   }
 
+  @Get('/diary/url')
+  getDiaryUrl(@Body() body: any) {
+    const { title, content } = body;
+    return this.appService.getDiaryUrl(title, content);
+  }
+
+  @Get('/diary')
+  getDiaryByUrl(@Param() hash: string) {
+    return this.appService.getDiaryByUrl(hash);
+  }
+
   @Get('/daily')
   getDaily(@Query('username') username: string, @Query('day') day: string) {
     return this.appService.getDaily(username, day);
@@ -142,8 +153,8 @@ export class AppController {
 
   @Get('/info')
   async getSafetyInfo(
-    @Param('date') date: string,
-    @Param('username') username: string,
+    @Query('date') date: string,
+    @Query('username') username: string,
   ): Promise<string> {
     return this.appService.getSafetyInfo(date, username);
   }

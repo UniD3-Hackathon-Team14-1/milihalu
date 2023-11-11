@@ -169,8 +169,8 @@ export class AppController {
   }
 
   @Get('/keyword')
-  async getSafetyKeyword(@Query('date') date: string): Promise<KeywordOutput> {
-    return this.appService.getSafetyKeyword(date);
+  async getSafetyKeyword(): Promise<KeywordOutput> {
+    return this.appService.getSafetyKeyword();
   }
 
   @Get('/keyword/news')

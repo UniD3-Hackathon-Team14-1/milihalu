@@ -70,7 +70,7 @@ export class AppService {
     return this.db.shared[hash];
   }
 
-  getSafetyKeyword(date: string) {
+  getSafetyKeyword() {
     const keyword = '# 한파주의보';
     const script = `
     안녕하세요, 여러분의 개인 안전 비서 ‘안비’입니다 !

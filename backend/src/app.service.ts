@@ -1,5 +1,4 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { KeywordOutput } from './interface/app.model';
 import { KeywordData, TemperatureKeywordData } from './interface/keyword.model';
 import { data } from './data/data.model';
 import { HttpService } from '@nestjs/axios';
@@ -71,15 +70,19 @@ export class AppService {
     return this.db.shared[hash];
   }
 
-  getSafetyKeyword(date: string): KeywordOutput {
-    const keyword = '한파';
-    const choices = [
-      '눈 맞고 뛰어간다',
-      '맨몸으로 추위를 느낀다.',
-      '야외활동은 자제한다.',
-    ];
-    const script = '엇!!!!! 너무 추워!!!!';
-    return { keyword, choices, script };
+  getSafetyKeyword(date: string) {
+    const keyword = '# 한파주의보';
+    const script = `
+    안녕하세요, 여러분의 개인 안전 비서 ‘안비’입니다 !
+오늘의 키워드는 #❄️한파주의보 입니다.
+오늘 아침 서울 기온이 올가을 첫 영하권인 영하 1.9도를 기록했는데요.
+북쪽 찬 공기가 꾸준히 내려오고 있어서 내일도 영하권의 추위가 계속 되겠습니다.
+철원이 영하 7도 등 지도에서 짙은 색인 중북부 내륙지방은 영하 5도를 밑돌겠고요.
+서울도 다시 영하 2도 선까지 뚝 떨어지겠습니다.
+낮 동안에도 찬 바람이 불며 추우니까 따뜻한 복장하고 장시간 외출은 피해주세요!
+특히, 갑작스러운 기온 변화로 인해 고혈압 환자분들은 심혈관질환 예방에 각별히 신경을 써주세요!
+    `;
+    return { keyword, script };
   }
 
   getSafetyInfo(date: string, username: string): string {

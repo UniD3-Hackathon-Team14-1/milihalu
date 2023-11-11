@@ -22,12 +22,12 @@ export default function News() {
       {
         dataList
         &&
-        dataList.keyword1.items.map(
+        dataList.keyword1.items.slice(0, 5).map(
           (x) =>
           <div className="card card-side bg-base-100 border my-4">
             <div className="card-body">
-            <a className="card-title link" href={x.originallink}>{x.title}</a>
-            <p>{x.description}</p>
+            <a className="card-title link" href={x.originallink}>{x.title.replace(/<[^>]*>?/g, '')}</a>
+            <p>{x.description.replace(/<[^>]*>?/g, '')}</p>
           </div>
         </div>
         )
@@ -36,12 +36,12 @@ export default function News() {
       {
         dataList
         &&
-        dataList.keyword2.items.map(
+        dataList.keyword2.items.slice(0,5).map(
           (x) =>
           <div className="card card-side bg-base-100 border my-4">
             <div className="card-body">
-            <a className="card-title link" href={x.originallink}>{x.title}</a>
-            <p>{x.description}</p>
+            <a className="card-title link" href={x.originallink}>{x.title.replace(/<[^>]*>?/g, '')}</a>
+            <p>{x.description.replace(/<[^>]*>?/g, '')}</p>
           </div>
         </div>
         )

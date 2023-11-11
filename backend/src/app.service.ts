@@ -24,8 +24,8 @@ export class AppService {
     return result;
   }
 
-  getWeekly(username: string, week: string) {
-    const date = new Date(week);
+  getWeekly(username: string, day: string) {
+    const date = new Date(day);
     date.setDate(date.getDate() - date.getDay());
     const result = [];
     for (let i = 0; i <= 6; i++) {
@@ -38,6 +38,7 @@ export class AppService {
         console.log('result become ', result);
       } catch (e) {
         console.log("couldn't find one");
+        result.push({ day: date_string, data: [] });
       }
       date.setDate(date.getDate() + 1);
       console.log(date);

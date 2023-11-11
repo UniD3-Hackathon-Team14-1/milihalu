@@ -30,19 +30,30 @@ export class AppController {
     const data = await this.appService.getDaily(username, day);
     if (!data) throw new BadRequestException();
     console.log(data);
-    const data_prompt = data.data
-      .map((ele) => `"""${ele.time}$${ele.position}$${ele.task}"""`)
+    const data_prompt: string = data.data
+      .map(
+        (ele) =>
+          `"""<div>${ele.time}</div><div>${ele.position}</div><div>${ele.task}</div>"""`,
+      )
       .join(' ');
     console.log(data_prompt);
+    const systemMessage1 = `
+      세 개의 쌍따옴표로 감싼 여러 텍스트 각각에는 시간, 위치, 할 일이 div 태그로 구분되어 적혀 있어.
+      일정들을 3개만 선택해서 출력해줘.`;
+    const systemMessage2 = `
+      엔터로 구분된 각 줄에는 시간, 위치, 할 일이 div태그로 구분되어 적혀 있어.
+      각 일정에 대해 발생할 수 있는 사건사고를 적어줘.
+      사건사고는 현실에서 일어날 법해야 해.
+      사건사고는 본인이 조심해야 하는 것을 적어 줘.
+      사건사고를 적을 때에는 간단한 일기를 쓰듯이 적어줘.`;
+    const systemMessage3 = `
+      각 사건사고를 일기 형식을 유지하면서 두 문장 이내로 요약해줘.
+      말투는 해요체로 친근하게 해야 해.`;
     const completion = await this.openAI.chat.completions.create({
       messages: [
         {
           role: 'system',
-          content: `너는 주어진 일정을 수행하는 가상의 사람이야.
-            세 개의 쌍따옴표로 감싼 여러 텍스트 각각에는 시간, 위치, 할 일이 '$'로 구분되어 적혀 있어.
-            각각의 일정을 진행하는 동안 안전사고가 날 만한 일을 일기 형식으로 짧게 적어줘.
-            생각지도 못한 사고이지만 많은 사람들이 안전불감증으로 놓치고 있는 안전사고이면 더 좋아.
-            친근한 말투로 해 주고 한두문장 정도로 반드시 짧게 적어줘`,
+          content: systemMessage1,
         },
         {
           role: 'user',
@@ -51,9 +62,37 @@ export class AppController {
       ],
       model: 'gpt-3.5-turbo',
     });
+    console.log(completion.choices[0].message);
+    const completion2 = await this.openAI.chat.completions.create({
+      messages: [
+        {
+          role: 'system',
+          content: systemMessage2,
+        },
+        {
+          role: 'user',
+          content: completion.choices[0].message.content,
+        },
+      ],
+      model: 'gpt-3.5-turbo',
+    });
+    console.log(completion2.choices[0].message);
+    const completion3 = await this.openAI.chat.completions.create({
+      messages: [
+        {
+          role: 'system',
+          content: systemMessage3,
+        },
+        {
+          role: 'user',
+          content: completion2.choices[0].message.content,
+        },
+      ],
+      model: 'gpt-3.5-turbo',
+    });
+    console.log(completion3.choices[0].message);
 
-    console.log(completion);
-    return { ok: true, completion };
+    return { content: completion3.choices[0].message };
   }
 
   @Get('/daily')

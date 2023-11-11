@@ -28,15 +28,18 @@ function Diary() {
                   주의하고, 숙취해소제를 구입하세요.
                   <br />
                   &nbsp; 밤 시간이 되면 바람이 더욱 강해질 예정이에요. 귀가시에
-                  주의하세요. '**주의**'
+                  주의하세요.
                 </h5>
               </div>
             </div>
             <div className={styles.DiaryCharacterConatiner}>
               <div className={styles.DiaryCharacter}></div>
-              <Link className={styles.HomeBtn} href={"/reminder"}>
-                확인 완료!
-              </Link>
+              <div className={styles.ButtonContainer}>
+                <button className={styles.HomeBtn}>공유</button>
+                <Link className={styles.HomeBtn} href={"/reminder"}>
+                  확인 완료!
+                </Link>
+              </div>
             </div>
           </div>
         </div>

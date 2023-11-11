@@ -107,6 +107,13 @@
   /* width: auto; */
   color: white;
   height: fit-content;
-  margin: 10px;
+  margin: 5px;
   font-size: small;
+  width: max-content;
+}
+
+.ButtonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }

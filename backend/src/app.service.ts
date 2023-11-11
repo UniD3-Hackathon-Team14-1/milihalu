@@ -38,6 +38,7 @@ export class AppService {
         console.log('result become ', result);
       } catch (e) {
         console.log("couldn't find one");
+        result.push({ day: date_string, data: [] });
       }
       date.setDate(date.getDate() + 1);
       console.log(date);

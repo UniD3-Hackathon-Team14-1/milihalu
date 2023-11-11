@@ -27,22 +27,30 @@ body {
     )
     rgb(var(--background-start-rgb));
   */
-  height: 100vh; 
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   .App {
     background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
+
   .top-box {
     width: 100vw;
-    height: 52vh;
+    height: fit-content;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    margin-top: 50px;
   }
 
   .text-box {
@@ -51,17 +59,19 @@ body {
     padding: 20px;
     font-size: 2.5em;
     font-weight: 470;
-    font-family: "Arial", "맑은 고딕", serif;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+      "Noto Color Emoji";
     color: rgb(0, 0, 0);
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(69, 254, 36);
+
+    background-color: white;
+    border: 1px solid lightgray;
     border-radius: 10px;
-    border: 10px;
-    border-color: rgb(1, 184, 1);
-    letter-spacing: 8px;
   }
 
   .centered-box {
@@ -91,7 +101,7 @@ body {
     background-position: center;
     background-size: contain;
 
-    width: 100px;
-    height: 50px;
+    height: 150px;
+    width: 150px;
   }
 }

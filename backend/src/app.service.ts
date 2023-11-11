@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { KeywordOutput } from './interface/app.model';
 
 @Injectable()
 export class AppService {
@@ -49,5 +50,16 @@ export class AppService {
     else this.db[username].push({ day, data });
 
     console.log(this.db);
+  }
+  
+  getSafetyKeyword(date: String): KeywordOutput{
+    const keyword = '한파'
+    const choices = ['눈 맞고 뛰어간다', '맨몸으로 추위를 느낀다.', '야외활동은 자제한다.']
+    const script = '엇!!!!! 너무 추워!!!!'
+    return { keyword, choices, script }
+  }
+
+  getSafetyInfo(date: String, username: String): string {
+    return ''
   }
 }

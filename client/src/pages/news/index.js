@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 export default function News() {
+  const [dataList, setDataList] = useState(undefined);
   useEffect(() => {
     async function getData() {
       const data = await axios.get('/api/news', {
@@ -9,22 +10,42 @@ export default function News() {
             username: 'asdf'
         }
       });
+      console.log(data.data);
+      setDataList(data.data);
     }
     getData();
   }, []);
 
   return(
     <div>
-      <div className="card card-side bg-base-100 shadow-xl">
-        <figure><img src="/images/stock/photo-1494232410401-ad00d5433cfa.jpg" alt="Album"/></figure>
-        <div className="card-body">
-          <h2 className="card-title">New album is released!</h2>
-          <p>Click the button to listen on Spotiwhy app.</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Listen</button>
+      {dataList && <h1 className="text-2xl ml-4">#{dataList.keyword1.category}</h1>}
+      {
+        dataList
+        &&
+        dataList.keyword1.items.map(
+          (x) =>
+          <div className="card card-side bg-base-100 border my-4">
+            <div className="card-body">
+            <a className="card-title link" href={x.originallink}>{x.title}</a>
+            <p>{x.description}</p>
           </div>
         </div>
-      </div>
+        )
+      }
+      {dataList && <h1 className="text-2xl ml-4">#{dataList.keyword2.category}</h1>}
+      {
+        dataList
+        &&
+        dataList.keyword2.items.map(
+          (x) =>
+          <div className="card card-side bg-base-100 border my-4">
+            <div className="card-body">
+            <a className="card-title link" href={x.originallink}>{x.title}</a>
+            <p>{x.description}</p>
+          </div>
+        </div>
+        )
+      }
     </div>
   );
 }

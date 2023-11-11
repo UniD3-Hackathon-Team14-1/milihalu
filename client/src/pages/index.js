@@ -1,5 +1,15 @@
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+
 export default function abc() {
   const chick = "client/public/images/ch01_yellow.jpg";
+
+  useEffect(() => {
+    async function getData() {
+      const data = await axios.get('/api/keyword');
+      console.log(data.data);
+    }
+  }, []);
 
   return (
     <div className="App">

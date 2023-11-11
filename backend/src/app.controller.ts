@@ -5,9 +5,11 @@ import {
   Get,
   Put,
   Query,
+  Param
 } from '@nestjs/common';
 import { AppService } from './app.service';
 import { OpenAI } from 'openai';
+import { KeywordOutput } from './interface/app.model';
 
 @Controller()
 export class AppController {
@@ -71,5 +73,15 @@ export class AppController {
     const { username, day, data } = body;
     console.log(data);
     this.appService.updateDaily(username, day, data);
+  }
+
+  @Get('/keyword')
+  async getSafetyKeyword(@Param('date') date: string): Promise<KeywordOutput> {
+    return this.appService.getSafetyKeyword(date);
+  }
+
+  @Get('/info')
+  async getSafetyInfo(@Param('date') date: string, @Param('username') username: string): Promise<String> {
+    return this.appService.getSafetyInfo(date, username);
   }
 }

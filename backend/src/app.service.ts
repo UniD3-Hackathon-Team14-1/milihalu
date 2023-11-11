@@ -2,9 +2,11 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { KeywordOutput } from './interface/app.model';
 import { KeywordData, TemperatureKeywordData } from './interface/keyword.model';
 import { data } from './data/data.model';
+import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class AppService {
+  constructor(private readonly httpService: HttpService) {}
   db = data;
 
   getHello(): string {
@@ -134,5 +136,21 @@ export class AppService {
     category.sort((a, b) => b.count - a.count);
     console.log(category);
     return category.slice(0, 2).map((ele) => ele.category);
+  }
+
+  async getKeywordNews(username: string) {
+    const category = 'hello';
+
+    const api_url =
+      'https://openapi.naver.com/v1/search/blog?query=' + encodeURI(category); // JSON 결과
+
+    const config = {
+      headers: {
+        'X-Naver-Client-Id': process.env.CLIENT_ID,
+        'X-Naver-Client-Secret': process.env.CLIENT_SECRET,
+      },
+    };
+
+    return this.httpService.get(api_url, config);
   }
 }

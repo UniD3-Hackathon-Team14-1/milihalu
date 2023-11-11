@@ -24,8 +24,8 @@ export class AppService {
     return result;
   }
 
-  getWeekly(username: string, week: string) {
-    const date = new Date(week);
+  getWeekly(username: string, day: string) {
+    const date = new Date(day);
     date.setDate(date.getDate() - date.getDay());
     const result = [];
     for (let i = 0; i <= 6; i++) {

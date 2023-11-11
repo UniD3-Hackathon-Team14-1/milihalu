@@ -3,6 +3,7 @@ import { KeywordOutput } from './interface/app.model';
 import { KeywordData, TemperatureKeywordData } from './interface/keyword.model';
 import { data } from './data/data.model';
 import { HttpService } from '@nestjs/axios';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable()
 export class AppService {
@@ -139,18 +140,30 @@ export class AppService {
   }
 
   async getKeywordNews(username: string) {
-    const category = 'hello';
-
-    const api_url =
-      'https://openapi.naver.com/v1/search/blog?query=' + encodeURI(category); // JSON 결과
-
+    const category = this.getTwoTopCategory(username);
+    const api_url_1 =
+      'https://openapi.naver.com/v1/search/news.json?query=' +
+      encodeURI(category[0] + ' 사고');
+    const api_url_2 =
+      'https://openapi.naver.com/v1/search/news.json?query=' +
+      encodeURI(category[1] + ' 사고');
     const config = {
       headers: {
         'X-Naver-Client-Id': process.env.CLIENT_ID,
         'X-Naver-Client-Secret': process.env.CLIENT_SECRET,
       },
     };
-
-    return this.httpService.get(api_url, config);
+    const data1 = await firstValueFrom(this.httpService.get(api_url_1, config));
+    const data2 = await firstValueFrom(this.httpService.get(api_url_2, config));
+    return {
+      keyword1: {
+        category: category[0],
+        items: data1['data']['items'],
+      },
+      keyword2: {
+        category: category[1],
+        items: data2['data']['items'],
+      },
+    };
   }
 }

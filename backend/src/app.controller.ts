@@ -89,7 +89,7 @@ export class AppController {
       ],
       model: 'gpt-3.5-turbo',
     });*/
-    const completion2 = await this.openAI.chat.completions.create({
+    /*const completion2 = await this.openAI.chat.completions.create({
       messages: [
         {
           role: 'system',
@@ -118,8 +118,11 @@ export class AppController {
       model: 'gpt-3.5-turbo',
     });
     console.log(completion3.choices[0].message);
-
-    return { diary: completion3.choices[0].message.content };
+      */
+    return {
+      diary:
+        '지하철을 이용할 때는 피난 시설이 제공되지 않은 역에 주의해야 해요. 화재 발생 시 대피하기 어렵기 때문에 주변 역이나 안전한 장소를 이용하는 게 좋아요.\n\n하이킹을 가게 되면 산악사고로 다치는 경우가 있을 수 있어요. 안전을 위해 주변에 돌아갈 수 있는 출구가 있는지 확인하고, 산행 시에는 경로와 조건을 미리 파악해야 해요.\n\n집에 돌아갈 때는 어두운 길을 지나갈 때 주의해야 해요. 길을 잘못해서 쓰러지거나 다치는 일이 발생할 수 있으니, 주변을 잘 살피고 조명이나 동반자를 함께 하면 더 안전해요.' /*completion3.choices[0].message.content*/,
+    };
   }
 
   @Get('/diary/url')

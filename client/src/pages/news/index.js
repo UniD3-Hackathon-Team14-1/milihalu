@@ -1,4 +1,18 @@
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+
 export default function News() {
+  useEffect(() => {
+    async function getData() {
+      const data = await axios.get('/api/news', {
+        params: {
+            username: 'asdf'
+        }
+      });
+    }
+    getData();
+  }, []);
+
   return(
     <div>
       <div className="card card-side bg-base-100 shadow-xl">

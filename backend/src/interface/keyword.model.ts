@@ -26,10 +26,10 @@ export const KeywordData: Keyword[] = [
     category: '중고거래',
     script: `### 💵 거래 안전
 
-    - 입금하기 전에 꼭! [더치트](https://thecheat.co.kr/rb/?mod=_search)에 **계좌번호를 조회하세요**. 안전한 계좌번호인지 확인하고 입금해야합니다.
-    - 만약 판매자가 금액 이외의 돈을 주고 다시 통장에 입금하라고 하면, 신종 사기 수법의 일부입니다.
-        - https://www.hani.co.kr/arti/society/society_general/1062357.html
-    - 직거래를 한다면, 안전한 장소에서 만나는 것을 추천드립니다.`,
+- 입금하기 전에 꼭! [더치트](https://thecheat.co.kr/rb/?mod=_search)에 **계좌번호를 조회하세요**. 안전한 계좌번호인지 확인하고 입금해야합니다.
+- 만약 판매자가 금액 이외의 돈을 주고 다시 통장에 입금하라고 하면, 신종 사기 수법의 일부입니다.
+	- https://www.hani.co.kr/arti/society/society_general/1062357.html
+- 직거래를 한다면, 안전한 장소에서 만나는 것을 추천드립니다.`,
   },
   {
     keyword: ['입금', '출금', '은행'],

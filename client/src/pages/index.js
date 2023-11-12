@@ -26,7 +26,7 @@ export default function abc() {
         <div className="chick-img" />
       </div>
       {
-        key && <pre>{key.script}</pre>
+        key && <pre className="w-full whitespace-pre-line">{key.script}</pre>
       }
     </div>
   );

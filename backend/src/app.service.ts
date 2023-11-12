@@ -89,7 +89,7 @@ export class AppService {
   getSafetyInfo(date: string, username: string): string {
     const daily = this.db[username]?.find((ele) => ele.day === date);
 
-    let script = date + '의 **안전 정보**를 알려드리겠습니다.\n';
+    let script = date + '의 **안전 정보**를 알려드리겠습니다.\n\n';
 
     //TODO: weather & temperature keyword
     script += TemperatureKeywordData['~10'];

@@ -1,7 +1,10 @@
-import React, { Fragment, useEffect, useState, alert } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import styles from "../../styles/diary.module.css";
 import Link from "next/link";
 import axios from "axios";
+
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 function Diary() {
   const [date, setDate] = useState("2023년 11월 12일");
@@ -33,14 +36,14 @@ function Diary() {
       });
       console.log(data.data);
       setHash(data.data);
+      const url = `http://localhost:3000/diary/${data.data}`;
+      console.log(url);
+      window.navigator.clipboard.writeText(url).then(() => {
+        alert("복사 완료");
+      });
     }
     getData();
     return myHash;
-  }
-
-  function shareUrl(hash) {
-    const url = `http://localhost:3000/diary/${hash}`;
-    console.log(url);
   }
 
   return (
@@ -53,7 +56,9 @@ function Diary() {
           <div className={styles.DiaryContainer}>
             <div className={styles.DiaryTextContainer}>
               <div className={styles.DiaryTextContainerInner}>
-                <h5 className={styles.DiaryText}>{myDiary}</h5>
+                <h5 className={styles.DiaryText}>
+                  <Markdown remarkPlugins={[remarkGfm]}>{myDiary}</Markdown>
+                </h5>
               </div>
             </div>
             <div className={styles.DiaryCharacterConatiner}>
@@ -62,7 +67,7 @@ function Diary() {
                 <button
                   className={styles.HomeBtn}
                   onClick={() => {
-                    shareUrl(findHash({ date }, { myDiary }));
+                    findHash({ date }, { myDiary });
                     // findHash({ date }, { myDiary });
                   }}
                 >

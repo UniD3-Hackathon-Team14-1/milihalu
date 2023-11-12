@@ -13,6 +13,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* max-width: 400px; */
 
   /* background-color: green; */
 }
@@ -32,16 +33,30 @@
 }
 
 .ReminderDetailContainer {
-  background-color: white;
-  border: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: green; */
+  border: 1px solid black;
   border-radius: 10px;
-  margin: 10px;
+  /* margin: 10px; */
   padding: 10px;
+  max-width: 400px;
+  /* width: 100%; */
 }
 
 .ReminderDetailTitleText {
+  display: block;
+  width: 100%;
+  height: auto;
+
   font-size: medium;
   font-weight: 600;
+  color: black;
+  /* background-color: green; */
+  white-space: normal;
+  width: wid;
 }
 
 .ReminderDetailText {
@@ -62,4 +77,32 @@
   align-items: center;
   justify-content: center;
   border-radius: 15px;
+}
+
+.ReminderDetailTitleText > h3 {
+  font-size: larger;
+  font-weight: 700;
+  /* background-color: aqua; */
+}
+
+.ReminderDetailTitleText > ul {
+  background-color: white;
+  border-radius: 10px;
+  margin: 1rem;
+}
+
+.ReminderDetailTitleText > p:nth-child(4) {
+  color: black;
+  /* border-radius: 10px; */
+  margin: 1rem 0px;
+  padding: 1rem 0px;
+  border-top: 1px black solid;
+  font-size: medium;
+}
+
+.ReminderDetailTitleText > p:nth-child(1) {
+  font-size: medium;
+  color: black;
+  /* 상우하좌 */
+  margin: 0 0 1rem 0;
 }

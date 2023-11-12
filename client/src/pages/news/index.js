@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function News() {
   const [dataList, setDataList] = useState(undefined);
   useEffect(() => {
     async function getData() {
-      const data = await axios.get('/api/news', {
+      const data = await axios.get("/api/news", {
         params: {
-            username: 'asdf'
-        }
+          username: "asdf",
+        },
       });
       console.log(data.data);
       setDataList(data.data);
@@ -16,36 +16,36 @@ export default function News() {
     getData();
   }, []);
 
-  return(
+  return (
     <div>
-      {dataList && <h1 className="text-2xl ml-4">#{dataList.keyword1.category}</h1>}
-      {
-        dataList
-        &&
-        dataList.keyword1.items.slice(0, 5).map(
-          (x) =>
+      {dataList && (
+        <h1 className="text-2xl ml-4">#{dataList.keyword1.category}</h1>
+      )}
+      {dataList &&
+        dataList.keyword1.items.slice(0, 5).map((x) => (
           <div className="card card-side bg-base-100 border my-4">
             <div className="card-body">
-            <a className="card-title link" href={x.originallink}>{x.title.replace(/<[^>]*>?/g, '')}</a>
-            <p>{x.description.replace(/<[^>]*>?/g, '')}</p>
+              <a className="card-title link" href={x.originallink}>
+                {x.title.replace(/<[^>]*>?/g, "")}
+              </a>
+              <p>{x.description.replace(/<[^>]*>?/g, "")}</p>
+            </div>
           </div>
-        </div>
-        )
-      }
-      {dataList && <h1 className="text-2xl ml-4">#{dataList.keyword2.category}</h1>}
-      {
-        dataList
-        &&
-        dataList.keyword2.items.slice(0,5).map(
-          (x) =>
+        ))}
+      {dataList && (
+        <h1 className="text-2xl ml-4">#{dataList.keyword2.category}</h1>
+      )}
+      {dataList &&
+        dataList.keyword2.items.slice(0, 5).map((x) => (
           <div className="card card-side bg-base-100 border my-4">
             <div className="card-body">
-            <a className="card-title link" href={x.originallink}>{x.title.replace(/<[^>]*>?/g, '')}</a>
-            <p>{x.description.replace(/<[^>]*>?/g, '')}</p>
+              <a className="card-title link" href={x.originallink}>
+                {x.title.replace(/<[^>]*>?/g, "")}
+              </a>
+              <p>{x.description.replace(/<[^>]*>?/g, "")}</p>
+            </div>
           </div>
-        </div>
-        )
-      }
+        ))}
     </div>
   );
 }

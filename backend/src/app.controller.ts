@@ -87,6 +87,7 @@ export class AppController {
 간단한 일기로 써 줘. \
 각 사건사고는 두 문장 이내로 요약해야 하는 것을 명심해. \
 앞에 - 표시는 절대 쓰면 안 돼. \
+각 사건사고 사이에 개행을 넣어 줘. \
 
 각 줄의 예시: "지하철역 가는데 미끄러져 넘어져 다치는 일이 있었어. 앞으로는 조심해서 다니도록 해야겠어.", "집에 돌아갈 때 길을 헤매서 고생했어. 다음에는 길을 잘 확인하고 가야겠어.", "하이킹 중에 넘어져 다치는 일이 있었어. 주의해야겠다."`;
     /*const completion = await this.openAI.chat.completions.create({
@@ -102,7 +103,7 @@ export class AppController {
       ],
       model: 'gpt-3.5-turbo',
     });*/
-    /*const completion2 = await this.openAI.chat.completions.create({
+    const completion2 = await this.openAI.chat.completions.create({
       messages: [
         {
           role: 'system',
@@ -131,11 +132,9 @@ export class AppController {
       model: 'gpt-3.5-turbo',
     });
     console.log(completion3.choices[0].message);
-      */
-    sleep(5);
+
     return {
-      diary:
-        '지하철을 탔는데 사람이 너무 많아서 넘어져 다치는 일이 있었어. 앞으로는 조심해서 다니도록 해야겠어. \n\n오늘은 카페에서 미끄러져 다치지 않도록 조심해야 했어. 발이 미끄러질 수 있는 상황에 대해 더욱 주의할 필요가 있어. \n\n하루 내내 과제를 하다보니 눈이 너무 피로해졌어. 앞으로는 적절한 휴식을 취하고 눈 건강에 더 신경써야지. 외식 중에 식중독을 걸리지 않도록 음식의 안전을 확인하는 습관을 들여야겠어. 생활 속에서 사소한 위험에도 주의하며 건강하고 안전하게 보내도록 노력해야겠어.',
+      diary: completion3.choices[0].message.content,
     };
   }
 

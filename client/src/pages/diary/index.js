@@ -57,7 +57,7 @@ function Diary() {
             <div className={styles.DiaryTextContainer}>
               <div className={styles.DiaryTextContainerInner}>
                 <h5 className={styles.DiaryText}>
-                  <Markdown remarkPlugins={[remarkGfm]}>{myDiary}</Markdown>
+                  <Markdown remarkPlugins={[remarkGfm]}></Markdown>
                 </h5>
               </div>
             </div>
